@@ -1,7 +1,11 @@
-import extract_features
+from extract_features import extract_features
+import pandas as pd
 import numpy as np
 import pickle 
 import matplotlib.pyplot as plt
+from skimage import morphology
+from skimage.color import rgba2rgb
+from skimage.segmentation import slic
 
 
 def classify(img, mask):
@@ -10,9 +14,11 @@ def classify(img, mask):
     
    #Extract features
    X = extract_features(img, mask)
-
-   #Convert X to a NumPy array and reshape it
-   X = np.array(X).reshape(1,-1)
+   features = ["Asymmetry", "Color Variability (R)", "Color Variability (G)", "Color Variability (B)",
+                           "Compactness", "Average Color (R)", "Average Color (G)", "Average Color (B)"]
+   
+   df = pd.DataFrame([X],columns= features)
+   X=df
     
    #Load the trained classifier
    classifier = pickle.load(open('group8_classifier.sav', 'rb'))
@@ -28,8 +34,8 @@ def classify(img, mask):
 
 def main():
 
-    img = plt.imread('PAT_55_84_506.png')
-    mask = plt.imread('mask_PAT_55_84_506.png')
+    #img = plt.imread('')
+    #mask = plt.imread('')
 
     classify(img,mask)
 

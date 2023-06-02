@@ -90,7 +90,7 @@ def get_color_variability(image, mask, measure='variance'):
     masked_image = apply_mask(image, mask)
  
     # Find the non-black pixels (i.e., the lesion pixels)
-    non_black_pixels = np.where(np.any(masked_image > 0, axis=-1))
+    non_black_pixels = np.where(np.any(masked_image > 0, axis=None))
 
     # Extract the color values of the non-black pixels
     r = masked_image[non_black_pixels][:, 0]
