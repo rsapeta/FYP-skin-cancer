@@ -28,8 +28,8 @@ def classify(img, mask):
 
 def main():
 
-    img = plt.imread('')
-    mask = plt.imread('')
+    img = plt.imread('PAT_55_84_506.png')
+    mask = plt.imread('mask_PAT_55_84_506.png')
 
     classify(img,mask)
 

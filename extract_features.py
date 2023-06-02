@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image, ImageOps
 from skimage import morphology
 from skimage.color import rgba2rgb
-from skimage.segmentation import slic, mark_boundaries
+from skimage.segmentation import slic
 
 
 
